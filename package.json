@@ -1,0 +1,17 @@
+{
+  "name": "y-dot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {},
+  "lint-staged": {
+    "*.{js}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.7",
+    "prettier": "^2.5.1"
+  }
+}
