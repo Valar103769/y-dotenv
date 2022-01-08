@@ -4,9 +4,10 @@ const path = require('path')
 // 过滤前后空格以及单引号,双引号
 const REG = /(^['"\s]*)|(['"\s]*$)/g
 
-function load(envPath) {
+function load(finalPath) {
+  if (!finalPath) return {}
   try {
-    const content = fs.readFileSync(envPath, 'utf-8')
+    const content = fs.readFileSync(finalPath, 'utf-8')
     const list = content.toString().match(/\S+/gm)
     return list.reduce((accu, curr) => {
       let [key, value] = curr.split('=')
@@ -27,16 +28,23 @@ function load(envPath) {
   }
 }
 
-function dot({ path: envPath, mode = '' } = {}) {
-  const basePath = path.resolve(process.cwd(), `.env${mode ? `.${mode}` : ``}`)
-  const localPath = `${basePath}.local`
+function dotenv({ mode = '' } = {}) {
+  // .env
+  const envPath = path.resolve(process.cwd(), '.env')
+  // .env.local
+  const envLocalPath = `${envPath}.local`
+  // .env.[mode]
+  const modePath = mode ? `${envPath}.${mode}` : ''
+  // .env.[mode].local
+  const modeLocalPath = mode ? `${envPath}.${mode}.local` : ''
 
-  if (envPath) {
-    return load(envPath)
-  } else {
-    return { ...load(basePath), ...load(localPath) }
+  return {
+    ...load(envPath),
+    ...load(envLocalPath),
+    ...load(modePath),
+    ...load(modeLocalPath),
   }
 }
 
-module.exports = dot
-module.exports.default = dot
+module.exports = dotenv
+module.exports.default = dotenv
