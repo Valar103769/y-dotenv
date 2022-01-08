@@ -1,8 +1,13 @@
 {
   "name": "y-dotenv",
+  "author": "valar103769",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Valar103769/y-dotenv"
+  },
   "scripts": {},
   "lint-staged": {
     "*.{js}": [
