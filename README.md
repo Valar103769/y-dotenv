@@ -41,7 +41,7 @@ const env = dot({ mode: "development" });
 console.log(env)
 ```
 
-| -参数-   | -描述-                               | -例子-                  |
-| -------- | ------------------------------------ | ----------------------- |
-| --path-- | --.env 路径,参数同 `fs.readFileSync` | `path.resolve('./env')` |
-| --mode-- | --扩展的文件后缀--                   | `.env.[mode]`           |
+| 参数 | 描述                | 例子                                  |
+| ---- | ------------------- | ------------------------------------- |
+| path | 自定义.env 文件路径 | `path.resolve(process.cwd(),'./env')` |
+| mode | 文件后缀            | `.env.[mode]`                         |
