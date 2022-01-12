@@ -23,7 +23,11 @@
 #### install
 
 ```bash
-npm install dot -D
+# with npm
+npm i y-dotenv
+
+# or with Yarn
+yarn add y-dotenv
 ```
 
 #### usage
