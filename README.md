@@ -43,11 +43,11 @@ VUE_APP_NOT_SECRET_CODE=some_value
 在编译阶段,你可以使用它
 
 ```bash
-const dot = require('dot')
+const dot = require('y-dotenv')
 const env = dot({ mode: "development" });
 console.log(env)
 ```
 
 | 参数 | 描述                                                                                                 | 例子               |
 | ---- | ---------------------------------------------------------------------------------------------------- | ------------------ |
-| mode | 需要读取的文件后缀,不传则只读.env,.env.local,传递后读取 env,.env.local,.env.[mode],.env.[mode].local | `.env.development` |
+| mode | 需要读取的文件后缀,不传则只读`.env`,`.env.local` 文件,传递后读取 `.env`,`.env.local`,`.env.[mode]`, `.env.[mode].local` 文件 | `.env.development` |
