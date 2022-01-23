@@ -8,7 +8,7 @@ function load(finalPath) {
   if (!finalPath) return {}
   try {
     const content = fs.readFileSync(finalPath, 'utf-8')
-    const list = content.toString().match(/\S+/gm)
+    const list = content.toString().match(/^[^]*$/gm)
     return list.reduce((accu, curr) => {
       let [key, value] = curr.split('=')
 
@@ -28,9 +28,9 @@ function load(finalPath) {
   }
 }
 
-function dotenv({ mode = '' } = {}) {
+function dotenv({ mode = '',cwd = process.cwd()} = {}) {
   // .env
-  const envPath = path.resolve(process.cwd(), '.env')
+  const envPath = path.resolve(cwd, '.env')
   // .env.local
   const envLocalPath = `${envPath}.local`
   // .env.[mode]
